@@ -37,19 +37,33 @@ export default function CustomCursor() {
     }
   }
 
+  // Pulls {x, y} out of either a mouse event or a touch event,
+  // so the rest of the code doesn't need to care which one fired.
+  const getPoint = (e) => {
+    if (e.touches && e.touches.length > 0) {
+      return { x: e.touches[0].clientX, y: e.touches[0].clientY }
+    }
+    if (e.changedTouches && e.changedTouches.length > 0) {
+      return { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY }
+    }
+    return { x: e.clientX, y: e.clientY }
+  }
+
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMove = (e) => {
+      const { x, y } = getPoint(e)
       clearTimeout(trailTimerRef.current)
       trailTimerRef.current = setTimeout(() => {
         const id = nextId.current++
-        setTrails((prev) => [...prev.slice(-12), { id, x: e.clientX, y: e.clientY }])
+        setTrails((prev) => [...prev.slice(-12), { id, x, y }])
         setTimeout(() => {
           setTrails((prev) => prev.filter((t) => t.id !== id))
         }, 400)
       }, 30)
     }
 
-    const handleMouseDown = (e) => {
+    const handlePress = (e) => {
+      const { x, y } = getPoint(e)
       playClickSound()
 
       const newSparks = Array.from({ length: 10 }, (_, i) => {
@@ -58,8 +72,8 @@ export default function CustomCursor() {
         const id = nextId.current++
         return {
           id,
-          x: e.clientX,
-          y: e.clientY,
+          x,
+          y,
           angle,
           distance,
           color: ['#f97316', '#facc15', '#fb923c', '#ef4444', '#fde68a'][Math.floor(Math.random() * 5)],
@@ -72,11 +86,19 @@ export default function CustomCursor() {
       }, 700)
     }
 
-    window.addEventListener('mousemove', handleMouseMove)
-    window.addEventListener('mousedown', handleMouseDown)
+    // Mouse (desktop)
+    window.addEventListener('mousemove', handleMove)
+    window.addEventListener('mousedown', handlePress)
+
+    // Touch (mobile/tablet) — passive:true keeps scrolling smooth
+    window.addEventListener('touchstart', handlePress, { passive: true })
+    window.addEventListener('touchmove', handleMove, { passive: true })
+
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
-      window.removeEventListener('mousedown', handleMouseDown)
+      window.removeEventListener('mousemove', handleMove)
+      window.removeEventListener('mousedown', handlePress)
+      window.removeEventListener('touchstart', handlePress)
+      window.removeEventListener('touchmove', handleMove)
     }
   }, [])
 
@@ -105,7 +127,7 @@ export default function CustomCursor() {
         ))}
       </AnimatePresence>
 
-      {/* Sparks on click */}
+      {/* Sparks on click/tap */}
       <AnimatePresence>
         {sparks.map((spark) => {
           const rad = (spark.angle * Math.PI) / 180
