@@ -99,18 +99,18 @@ export default function Skills() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="max-w-5xl mx-auto flex flex-wrap justify-center gap-3"
+          className="max-w-5xl mx-auto grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:justify-center sm:gap-3"
         >
           {allSkills.map((skill) => (
             <motion.div
               key={skill.name}
               variants={pillVariants}
-              className="flex items-center justify-center gap-3 py-3 px-8 min-w-[160px] h-12 rounded-full bg-white dark:bg-white/[0.03] border border-black/5 dark:border-white/[0.08] shadow-sm hover:border-blue-500/30 dark:hover:border-blue-400/30 hover:shadow-[0_8px_24px_rgba(37,99,235,0.08)] hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 cursor-default"
+              className="flex items-center justify-center gap-2 sm:gap-3 py-2.5 sm:py-3 px-3 sm:px-8 sm:min-w-[160px] h-11 sm:h-12 rounded-full bg-white dark:bg-white/[0.03] border border-black/5 dark:border-white/[0.08] shadow-sm hover:border-blue-500/30 dark:hover:border-blue-400/30 hover:shadow-[0_8px_24px_rgba(37,99,235,0.08)] hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 cursor-default"
             >
-              <span className="w-7 h-7 flex items-center justify-center rounded-full bg-black/[0.04] dark:bg-white/[0.06] text-[1rem] flex-shrink-0">
+              <span className="w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center rounded-full bg-black/[0.04] dark:bg-white/[0.06] text-[0.9rem] sm:text-[1rem] flex-shrink-0">
                 {skill.icon}
               </span>
-              <span className="text-[0.88rem] font-semibold text-neutral-700 dark:text-[#94a3b8] whitespace-nowrap leading-none">
+              <span className="text-[0.8rem] sm:text-[0.88rem] font-semibold text-neutral-700 dark:text-[#94a3b8] whitespace-nowrap leading-none truncate">
                 {skill.name}
               </span>
             </motion.div>

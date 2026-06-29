@@ -182,9 +182,9 @@ export default function Hero() {
 
           {/* LEFT — Text content */}
           <div className="lg:order-1 order-2 animate-[slide-in-left_1s_ease-out] max-lg:text-center flex flex-col justify-center">
-            <div className="inline-flex items-center self-center lg:self-start gap-2 px-4 py-1.5 glass rounded-full text-xs font-semibold text-text-secondary dark:text-[#94a3b8] mb-6">
-              <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
-              Based in Semarang, Indonesia • Open to Work
+            <div className="inline-flex items-center self-center lg:self-start gap-2 px-4 py-1.5 mx-4 max-w-[calc(100%-2rem)] glass rounded-full text-xs font-semibold text-text-secondary dark:text-[#94a3b8] mb-6 text-left">
+              <span className="w-2 h-2 shrink-0 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
+              <span>Based in Semarang, Indonesia • Open to Work </span>
             </div>
 
             <h1 className="font-heading text-[clamp(2.75rem,6vw,4.25rem)] font-extrabold leading-[1.08] tracking-tight mb-6">
@@ -223,17 +223,17 @@ export default function Hero() {
 
             <br />
 
-            <div className="flex gap-10 mt-6 pt-8 border-t border-black/5 dark:border-white/5 max-lg:justify-center max-sm:flex-col max-sm:items-center max-sm:gap-6">
+            <div className="flex flex-row gap-6 sm:gap-10 mt-6 pt-8 border-t border-black/5 dark:border-white/5 max-lg:justify-center">
               {[
                 { number: '10+', label: 'Completed Projects' },
                 { number: '3+', label: 'Years Coding' },
                 { number: '5+', label: 'Tech Stacks' },
               ].map((stat) => (
                 <div key={stat.label} className="text-center lg:text-left">
-                  <div className="font-heading text-[1.85rem] font-bold gradient-text leading-none">
+                  <div className="font-heading text-[1.5rem] sm:text-[1.85rem] font-bold gradient-text leading-none">
                     {stat.number}
                   </div>
-                  <div className="text-[0.82rem] text-text-muted dark:text-[#64748b] mt-1.5">
+                  <div className="text-[0.7rem] sm:text-[0.82rem] text-text-muted dark:text-[#64748b] mt-1.5 whitespace-nowrap">
                     {stat.label}
                   </div>
                 </div>
@@ -260,7 +260,7 @@ export default function Hero() {
             {floatingIcons.map((item) => (
               <div
                 key={item.label}
-                className={`absolute ${item.pos} rounded-full glass-card px-3 py-2 text-[0.8rem] font-semibold text-text-secondary dark:text-[#94a3b8] animate-float`}
+                className={`absolute ${item.pos} px-3 py-2 text-[0.8rem] font-semibold text-text-secondary dark:text-[#94a3b8] animate-float bg-transparent border-none shadow-none`}
                 style={{ animationDelay: item.delay }}
               >
                 <span className="flex items-center gap-2">
