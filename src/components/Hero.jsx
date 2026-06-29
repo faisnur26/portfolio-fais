@@ -209,7 +209,7 @@ export default function Hero() {
 
             <div className="flex gap-4 flex-wrap max-lg:justify-center mb-10">
               <a
-                href="/resume.pdf"
+                href="/licenses/CV_Fais_Nur_Amrulloh.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative inline-flex h-[42px] min-w-[190px] items-center justify-center px-8 gradient-bg rounded-full text-center font-semibold text-[0.95rem] shadow-[0_4px_20px_rgba(37,99,235,0.25)] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(37,99,235,0.4)] transition-all duration-300"
