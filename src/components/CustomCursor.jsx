@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 export default function CustomCursor() {
   const [sparks, setSparks] = useState([])
   const [trails, setTrails] = useState([])
+  const [rocketPos, setRocketPos] = useState(null) // {x, y} or null when finger is up
+  const [isTouchDevice, setIsTouchDevice] = useState(false)
   const audioCtxRef = useRef(null)
   const nextId = useRef(0)
   const trailTimerRef = useRef(null)
@@ -50,8 +52,14 @@ export default function CustomCursor() {
   }
 
   useEffect(() => {
+    // Detect touch-primary devices once on mount (covers most phones/tablets).
+    if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) {
+      setIsTouchDevice(true)
+    }
+
     const handleMove = (e) => {
       const { x, y } = getPoint(e)
+      setRocketPos({ x, y })
       clearTimeout(trailTimerRef.current)
       trailTimerRef.current = setTimeout(() => {
         const id = nextId.current++
@@ -64,6 +72,7 @@ export default function CustomCursor() {
 
     const handlePress = (e) => {
       const { x, y } = getPoint(e)
+      setRocketPos({ x, y })
       playClickSound()
 
       const newSparks = Array.from({ length: 10 }, (_, i) => {
@@ -86,24 +95,50 @@ export default function CustomCursor() {
       }, 700)
     }
 
-    // Mouse (desktop)
+    const handleTouchEnd = () => {
+      setRocketPos(null) // hide the rocket icon once the finger lifts
+    }
+
+    // Mouse (desktop) — rocket image itself is drawn natively by the CSS cursor rule
     window.addEventListener('mousemove', handleMove)
     window.addEventListener('mousedown', handlePress)
 
     // Touch (mobile/tablet) — passive:true keeps scrolling smooth
     window.addEventListener('touchstart', handlePress, { passive: true })
     window.addEventListener('touchmove', handleMove, { passive: true })
+    window.addEventListener('touchend', handleTouchEnd, { passive: true })
+    window.addEventListener('touchcancel', handleTouchEnd, { passive: true })
 
     return () => {
       window.removeEventListener('mousemove', handleMove)
       window.removeEventListener('mousedown', handlePress)
       window.removeEventListener('touchstart', handlePress)
       window.removeEventListener('touchmove', handleMove)
+      window.removeEventListener('touchend', handleTouchEnd)
+      window.removeEventListener('touchcancel', handleTouchEnd)
     }
   }, [])
 
   return (
     <>
+      {/* Rocket icon that follows the finger — touch devices only.
+          Desktop already gets the rocket via the CSS `cursor: url(...)` rule,
+          so we don't render this there to avoid a duplicate. */}
+      {isTouchDevice && rocketPos && (
+        <img
+          src="/rocket-cursor.png"
+          alt=""
+          className="fixed pointer-events-none z-[99997] select-none"
+          style={{
+            left: rocketPos.x,
+            top: rocketPos.y,
+            width: 40,
+            height: 40,
+            transform: 'translate(-20%, -20%)', // roughly matches the 32 32 hotspot offset
+          }}
+        />
+      )}
+
       {/* Trail */}
       <AnimatePresence>
         {trails.map((trail) => (
