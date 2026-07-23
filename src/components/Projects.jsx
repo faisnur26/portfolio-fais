@@ -325,8 +325,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="bg-white dark:bg-[#0a0a0f] transition-colors duration-300"
-      style={{ position: 'relative', overflow: 'hidden', padding: '7rem 0' }}
+      className="py-16 lg:py-20 bg-white dark:bg-[#0a0a0f] transition-colors duration-300 relative overflow-hidden"
     >
       {/* Blobs */}
       <div className="absolute top-1/4 left-[10%] w-96 h-96 bg-blue-500/10 dark:bg-blue-600/5 rounded-full blur-3xl mix-blend-screen pointer-events-none animate-morph" />

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 export default function About() {
   return (
-    <section id="about" className="pt-24 pb-36 lg:pt-28 lg:pb-44 relative overflow-hidden bg-white dark:bg-[#0a0a0f] transition-colors duration-300">
+    <section id="about" className="py-16 lg:py-20 relative overflow-hidden bg-white dark:bg-[#0a0a0f] transition-colors duration-300">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/[0.02] to-transparent dark:via-blue-500/[0.04]" />
       </div>
@@ -48,7 +48,7 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="w-full max-w-4xl text-center text-lg text-text-secondary dark:text-[#94a3b8] leading-[2] mb-5"
           >
-            I am Fais Nur Amrulloh, a Fullstack Developer and Informatics Engineering student at Dian Nuswantoro University. I have experience developing web applications, working on both frontend interfaces and backend systems to create complete and functional solutions.
+            I am Fais Nur Amrulloh 👋, a Fullstack Developer 💻 and Informatics Engineering student at Dian Nuswantoro University 🎓. I have experience developing web applications, working on both frontend interfaces and backend systems to create complete and functional solutions 🛠️.
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -57,7 +57,7 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="w-full max-w-4xl text-center text-lg text-text-secondary dark:text-[#94a3b8] leading-[2]"
           >
-            I enjoy turning ideas into practical applications and continuously improving my technical skills through academic and personal projects. My focus is on building applications that are reliable, user-friendly, and maintainable.
+            I enjoy turning ideas into practical applications 🚀 and continuously improving my technical skills through academic and personal projects 💡. My focus is on building applications that are reliable, user-friendly, and maintainable ⚡.
           </motion.p>
 
         </div>

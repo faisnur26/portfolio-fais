@@ -56,16 +56,13 @@ function SpotlightCard({ children }) {
     <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      className="group dark:bg-neutral-900/40 dark:border-white/[0.07] hover:border-blue-400/40"
+      className="group bg-white dark:bg-neutral-900/40 border border-black/5 dark:border-white/[0.07] hover:border-blue-500/30 dark:hover:border-blue-400/30 transition-all duration-300"
       style={{
         position: 'relative',
         borderRadius: '16px',
-        background: 'white',
-        border: '1px solid rgba(0,0,0,0.08)',
         boxShadow: '0 2px 16px rgba(0,0,0,0.04)',
         overflow: 'hidden',
         width: '100%',
-        transition: 'box-shadow 0.3s, border-color 0.3s',
       }}
     >
       <div
@@ -320,8 +317,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="bg-white dark:bg-[#0a0a0f] transition-colors duration-300"
-      style={{ position: 'relative', overflow: 'hidden', padding: '6rem 0' }}
+      className="py-16 lg:py-20 bg-white dark:bg-[#0a0a0f] transition-colors duration-300 relative overflow-hidden"
     >
       {/* Blobs */}
       <div style={{

@@ -72,8 +72,7 @@ export default function Certifications() {
   return (
     <section
       id="certifications"
-      className="bg-white dark:bg-[#0a0a0f] transition-colors duration-300"
-      style={{ position: 'relative', overflow: 'hidden', padding: '7rem 0' }}
+      className="py-16 lg:py-20 bg-white dark:bg-[#0a0a0f] transition-colors duration-300 relative overflow-hidden"
     >
       {/* Blob bg */}
       <div
