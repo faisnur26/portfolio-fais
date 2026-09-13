@@ -6,8 +6,8 @@ const experiences = [
   {
     role: 'Software Engineer Intern',
     company: 'PT Pertamina Lubricants',
-    duration: '2025 - 2026',
-    location: 'Jakarta, Indonesia',
+    duration: 'Sep 2025 – Jan 2026',
+    location: 'Jakarta Pusat, DKI Jakarta',
     logo: '/logo-pertamina-lubricants.png',
     description: [
       'Developed and maintained enterprise web applications to support asset management and operational workflows.',
@@ -20,7 +20,7 @@ const experiences = [
     role: 'Member of Reasoning Division',
     company: 'HMDTI (Himpunan Mahasiswa D3 Teknik Informatika)',
     duration: '2024 - 2025',
-    location: 'Semarang, Indonesia',
+    location: 'Semarang, Jawa Tengah',
     logo: '/logo-hmdti.png',
     description: [
       'Organized workshops, discussions, and knowledge-sharing sessions related to technology and innovation.',

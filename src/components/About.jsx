@@ -48,7 +48,7 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="w-full max-w-4xl text-center text-lg text-text-secondary dark:text-[#94a3b8] leading-[2] mb-5"
           >
-            I am Fais Nur Amrulloh 👋, a Fullstack Developer 💻 and Informatics Engineering student at Dian Nuswantoro University 🎓. I have experience developing web applications, working on both frontend interfaces and backend systems to create complete and functional solutions 🛠️.
+            I am Fais Nur Amrulloh 👋, a Fullstack Developer 💻 and Fresh Graduate in Informatics Engineering (GPA 3.54 / 4.00) from Dian Nuswantoro University 🎓. I have experience developing web applications, working on both frontend interfaces and backend systems to create complete and functional solutions 🛠️.
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
